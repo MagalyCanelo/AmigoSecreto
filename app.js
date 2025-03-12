@@ -3,8 +3,10 @@
 const newAmigo = document.getElementById("amigo")
 const botonAdd = document.getElementById("boton-add")
 const listaAmigos = document.getElementById("listaAmigos")
+const botonSortear = document.getElementById("boton-sortear")
 const resultado = document.getElementById("resultado");
-let amigos = []
+let amigos = [];
+let amigoGanador; 
 
 botonAdd.addEventListener("click", function() {
     console.log(newAmigo.value)
@@ -13,6 +15,11 @@ botonAdd.addEventListener("click", function() {
     actualizarLista();
 });
 
+botonSortear.addEventListener("click", function() {
+    sortearAmigos(amigos);
+    amigos.length == 0 ? resultado.innerHTML = "" : resultado.innerHTML = `El amigo secreto es: ${amigos[amigoGanador]}`
+})
+
 function actualizarLista() {
     listaAmigos.innerHTML = ""; 
     amigos.forEach(amigo => {
@@ -20,4 +27,9 @@ function actualizarLista() {
         li.textContent = amigo;
         listaAmigos.appendChild(li);
     });
+}
+
+function sortearAmigos(amigos) {
+    amigos.length == 0 ? alert("La lista esta vacia") : amigoGanador = Math.floor(Math.random() * amigos.length);
+    return amigoGanador
 }
