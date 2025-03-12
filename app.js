@@ -17,6 +17,7 @@ botonAdd.addEventListener("click", function() {
 
 botonSortear.addEventListener("click", function() {
     sortearAmigos(amigos);
+    listaAmigos.innerHTML = ""; 
     amigos.length == 0 ? resultado.innerHTML = "" : resultado.innerHTML = `El amigo secreto es: ${amigos[amigoGanador]}`
 })
 
